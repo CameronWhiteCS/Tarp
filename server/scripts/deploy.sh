@@ -1,3 +1,5 @@
+
+
 sudo a2ensite $USER.hci.cameronwhite.io
 
 cat > $HOME/HCIProject/server/wsgi.py << EOL
@@ -9,15 +11,18 @@ from app import app as application
 EOL
 
 cat > /etc/apache2/sites-enabled/$USER.hci.cameronwhite.io.conf << EOL
-    <VirtualHost *:80>
+<VirtualHost *:80>
 
 	ServerName $USER.hci.cameronwhite.io
 
 	ServerAdmin webmaster@localhost
 	DocumentRoot /var/www/$USER
 
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+        ProxyPass "/"  "http://127.0.0.1:$UWSGI_PORT"
+        ProxyPassReverse "/"  "http://127.0.0.1:$UWSGI_PORT"
+
+	ErrorLog /error.log
+	CustomLog /access.log combined
 
 </VirtualHost>
 
@@ -26,25 +31,25 @@ cat > /etc/apache2/sites-enabled/$USER.hci.cameronwhite.io.conf << EOL
 
 	        ServerName $USER.hci.cameronwhite.io
 
+                ProxyPass "/api"  "http://127.0.0.1:$UWSGI_PORT"
+                ProxyPassReverse "/api"  "http://127.0.0.1:$UWSGI_PORT"
 
                 DocumentRoot /var/www/$USER
 
-                ErrorLog ${APACHE_LOG_DIR}/error.log
-                CustomLog ${APACHE_LOG_DIR}/access.log combined
+                ErrorLog /error.log
+                CustomLog /access.log combined
 
                 SSLEngine on
 
                 SSLCertificateFile /etc/letsencrypt/live/hci.cameronwhite.io/fullchain.pem
                 SSLCertificateKeyFile /etc/letsencrypt/live/hci.cameronwhite.io/privkey.pem
 
-                <Directory /home/$USER/HCIProject/server>
-                    Order deny,allow
-                    Require all granted
+                <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                                SSLOptions +StdEnvVars
+                </FilesMatch>
+                <Directory /usr/lib/cgi-bin>
+                                SSLOptions +StdEnvVars
                 </Directory>
-
-                WSGIDaemonProcess $USER python-path=/home/$USER/HCIProject/server/src:/home/$USER/HCIProject/server/env/lib/python3.8/site-packages
-                WSGIProcessGroup $USER
-                WSGIScriptAlias / /home/$USER/HCIProject/server/wsgi.py
 
         </VirtualHost>
 </IfModule>
@@ -52,3 +57,10 @@ cat > /etc/apache2/sites-enabled/$USER.hci.cameronwhite.io.conf << EOL
 EOL
 
 sudo service apache2 restart
+
+cd $HOME/HCIProject/client
+npm run build
+cp -dr $HOME/HCIProject/client/build/* /var/www/$USER/
+pkill -u $USER uwsgi -9 -f
+cd $HOME/HCIProject/server
+uwsgi --wsgi-file wsgi.py --http $UWSGI_PORT -d $HOME/uwsgi.log
