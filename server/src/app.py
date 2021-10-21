@@ -1,4 +1,4 @@
-from flask import Flask, make_response
+from flask import Flask, make_response, Blueprint
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -10,7 +10,8 @@ load_dotenv()
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
-from models import *
+
+from hci.models import User
 
 # Configure the app
 mysql_user = os.environ['MYSQL_USER']
@@ -31,6 +32,7 @@ try:
     db.create_all()
 except:
     print('Failed to initialize database.')
+
 
 @app.route('/')
 def route_index():
