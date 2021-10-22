@@ -18,8 +18,8 @@ cat > /etc/apache2/sites-enabled/$USER.hci.cameronwhite.io.conf << EOL
 	ServerAdmin webmaster@localhost
 	DocumentRoot /var/www/$USER
 
-        ProxyPass "/"  "http://127.0.0.1:$UWSGI_PORT"
-        ProxyPassReverse "/"  "http://127.0.0.1:$UWSGI_PORT"
+        ProxyPass "/"  "http://127.0.0.1:$UWSGI_PORT/api/"
+        ProxyPassReverse "/"  "http://127.0.0.1:$UWSGI_PORT/api/"
 
 	ErrorLog /error.log
 	CustomLog /access.log combined
@@ -31,8 +31,8 @@ cat > /etc/apache2/sites-enabled/$USER.hci.cameronwhite.io.conf << EOL
 
 	        ServerName $USER.hci.cameronwhite.io
 
-                ProxyPass "/api"  "http://127.0.0.1:$UWSGI_PORT"
-                ProxyPassReverse "/api"  "http://127.0.0.1:$UWSGI_PORT"
+                ProxyPass "/api"  "http://127.0.0.1:$UWSGI_PORT/api/"
+                ProxyPassReverse "/api"  "http://127.0.0.1:$UWSGI_PORT/api/"
 
                 DocumentRoot /var/www/$USER
 
@@ -61,6 +61,6 @@ sudo service apache2 restart
 cd $HOME/HCIProject/client
 npm run build
 cp -dr $HOME/HCIProject/client/build/* /var/www/$USER/
-pkill -u $USER uwsgi -9 -f
+pkill uwsgi -9 -f
 cd $HOME/HCIProject/server
-uwsgi --wsgi-file wsgi.py --http $UWSGI_PORT -d $HOME/uwsgi.log
+uwsgi --wsgi-file wsgi.py --http :$UWSGI_PORT -d $HOME/uwsgi.log
