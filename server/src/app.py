@@ -1,25 +1,20 @@
-from flask import Flask, make_response, Blueprint
-from dotenv import load_dotenv
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+from hci.routes import authentication_routes
+
 import os
 
-# Load environment variables from the .env file
+# Load environment variables
 load_dotenv()
-
-# Create Flask / uWSGI app
-app = Flask(__name__)
-db = SQLAlchemy(app)
-
-
-from hci.models import User
-
-# Configure the app
 mysql_user = os.environ['MYSQL_USER']
 mysql_password = os.environ['MYSQL_PASSWORD']
 mysql_host = os.environ['MYSQL_HOST']
 mysql_port = os.environ['MYSQL_PORT']
 mysql_database = os.environ['MYSQL_DATABASE']
 
+# Create and configure app
+app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{mysql_user}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -28,15 +23,12 @@ app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 
-try:
-    db.create_all()
-except:
-    print('Failed to initialize database.')
+# Register blueprints
+app.register_blueprint(authentication_routes)
 
-
-@app.route('/')
-def route_index():
-    return make_response('Hello, world!')
+# Import and initialize database from models module
+from hci.models import db
+db.init_app(app)
 
 if __name__ == '__main__':
     app.run()
