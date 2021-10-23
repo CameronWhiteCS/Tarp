@@ -6,6 +6,7 @@
 
 export PROJECT_ROOT=$HOME/HCIProject/
 export SERVER_ROOT=$PROJECT_ROOT/server/
+export PYTHONHOME=$HOME/HCIProject/server/src:$HOME/HCIProject/server/env/lib/python3.8/site-packages
 export FLASK_APP=$HOME/HCIProject/server/src/app.py
 export FLASK_ENV=development
 

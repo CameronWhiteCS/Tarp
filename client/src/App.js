@@ -1,20 +1,49 @@
 import axios from 'axios';
+import {useEffect, useState} from 'react'
 
 import './App.css';
 
-function App() {
-  return (
+const init = (setSignedIn) => {
+  axios.get('/api/v1/session')
+  .then(res => {
+    setSignedIn(true)
+  })
+  .catch(err => {
+    setSignedIn(false)
+  })
+} 
+
+const App = () => {
+  const [isSignedIn, setSignedIn] = useState(false);
+  useEffect(() => init(setSignedIn), []);
+
+
+
+  if(!isSignedIn) {
+    return <>
     <button onClick={() => {
-      alert();
-      axios.delete('/api/v1/user')
-      .then((res) => console.log(res))
+      axios.post('/api/v1/user', {
+        firstName: 'Cameron',
+        lastName: 'White',
+        email: 'cmw24375@gmail.com',
+        password: 'password',
+        passwordConfirm: 'password',
+      })
+      .then((res) => {
+
+      })
       .catch((err) => {
-        console.log(err)
+
       })
     }}>
-      Click me :D
+      Click me to create account
     </button>
-  );
-}
 
+    </>
+  } 
+
+  return <>
+  </>
+  
+}
 export default App;
