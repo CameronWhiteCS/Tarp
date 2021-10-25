@@ -1,0 +1,28 @@
+body {
+    height: 100vh;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+#macro-layout {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#ribbon-and-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#ribbon {
+    min-height: var(--bar-size);
+    max-height: var(--bar-size);
+    width: 100%;
+}
+
+#main {
+    height:100%
+}

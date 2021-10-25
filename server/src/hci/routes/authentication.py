@@ -1,3 +1,8 @@
+'''
+    Routes for creating users, signing in,
+    signing out, and checking if you're signed in or not.
+'''
+
 from flask import request, make_response, session
 import bcrypt
 from hci.models import User
@@ -5,6 +10,12 @@ from hci.regex import EMAIL
 from hci.decorators import validate, require_authentication
 from hci.globals import app, db
 from .util import error
+
+def get_user_data(user):
+    return {
+        'id': user.id,
+        'isAdmin': user.is_admin
+    }
 
 @app.route('/api/v1/user', methods=['POST'])
 def route_create_account():
@@ -64,7 +75,7 @@ def create_user(json):
 
 
     db.session.commit()
-    return make_response('Account successfully created.', 200)
+    return make_response(get_user_data(new_user), 200)
 
 
 
@@ -110,12 +121,12 @@ def route_signin():
 
     session['uid'] = user.id
             
-    return make_response('Signed in', 200)
+    return make_response(get_user_data(user), 200)
 
 @app.route('/api/v1/session')
 @require_authentication
 def route_session_check(user=None):
-    return make_response('You are currently signed in.', 200)
+    return make_response(get_user_data(user), 200)
 
 
 @app.route('/api/v1/user/<id>')
