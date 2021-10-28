@@ -1,7 +1,5 @@
 import { useLocation } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
-
-import './sidebar.css'
 import { connect } from 'react-redux'
 
 import { ReactComponent as IconBook } from 'res/icon/book.svg'
@@ -13,11 +11,14 @@ import { ReactComponent as IconSettings } from 'res/icon/settings.svg'
 import { ReactComponent as IconUser } from 'res/icon/user.svg'
 import { ReactComponent as IconUsers } from 'res/icon/users.svg'
 
+import './sidebar.css'
+
 
 const Sidebar = (props) => {
 
     const location = useLocation();
-    const section = location.pathname?.split('/')[0];
+    const section = location.pathname?.split('/')[1];
+
 
     const history = useHistory();
 
@@ -70,8 +71,8 @@ const Sidebar = (props) => {
 
             {
                 props.userData.isAdmin === true &&
-                <div class={`sidebar-item ${section === 'asdf' ? 'selected' : ''}`}>
-                    <IconTool onClick={() => visitUrl('/')} />
+                <div class={`sidebar-item ${section === 'admin' ? 'selected' : ''}`}>
+                    <IconTool onClick={() => visitUrl('/admin')} />
                     Admin Settings
                 </div>
             }

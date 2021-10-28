@@ -4,11 +4,13 @@ import rootReducer from 'reducers'
 const initialState = {
     emails: [],
     notifications: [],
+    errors: [],
     userData: {
-        id: undefined,
-        isAdmin: false
+
     },
-    loadingReasons: []
+    loadingReasons: [],
+    courses: [],
+    confirmationDialogues: []
 }
 
 const store = createStore(rootReducer, initialState)

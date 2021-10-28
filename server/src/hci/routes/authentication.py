@@ -124,9 +124,20 @@ def route_signin():
     return make_response(get_user_data(user), 200)
 
 @app.route('/api/v1/session')
-@require_authentication
 def route_session_check(user=None):
-    return make_response(get_user_data(user), 200)
+
+    # We can't use require_authentication due to some special
+    # handling here. 
+
+        if 'uid' not in session:
+            return error('You must be signed in to perform this operation.')
+        else:
+            user = db.session.query(User).get(session['uid'])
+            if not user:
+                session.clear()
+                return error('Invalid session.')
+            return make_response(get_user_data(user), 200)
+
 
 
 @app.route('/api/v1/user/<id>')
