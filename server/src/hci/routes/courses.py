@@ -1,6 +1,6 @@
 from flask import make_response, jsonify, request
 from hci.globals import app, db
-from hci.models import Course
+from hci.models import Course, CourseEnrollment
 from hci.decorators import require_authentication, validate
 from cerberus import Validator
 
@@ -116,5 +116,19 @@ def route_get_all_courses():
     output = []
     for course in courses:
         output.append(course.to_dict())
+
+    return make_response(jsonify(output), 200)
+
+@app.route('/api/v1/courses/user/<user_id>')
+def route_get_courses_by_user_id(user_id):
+
+    output = []
+
+    course_enrollments = db.session.query(CourseEnrollment).filter(CourseEnrollment.user_id==user_id).all()
+
+    for enrollment in course_enrollments:
+        course = enrollment.course.to_dict()
+        course['role'] = enrollment.role.value
+        output.append(course)
 
     return make_response(jsonify(output), 200)

@@ -17,13 +17,13 @@ class ConfirmationDialogue {
      * @param {string} rejectbuttonText The text of the "reject" or "decline" button. Defaults to 'reject'
      * 
      */
-    constructor(title, prompt, onAccept = emptyFunc, onDecline = emptyFunc, acceptButtonText = '', rejectbuttonText = ''){
+    constructor(title, prompt, onAccept = emptyFunc, onDecline = emptyFunc, acceptButtonText = '', rejectButtonText = ''){
         this.title = title;
         this.prompt = prompt;
         this.onAccept = onAccept;
         this.onDecline = onDecline;
         this.acceptButtonText = acceptButtonText;
-        this.rejectbuttonText = rejectbuttonText;
+        this.rejectButtonText = rejectButtonText;
     }
 }
 
