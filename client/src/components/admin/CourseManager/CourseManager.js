@@ -2,7 +2,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { addLoadingReason, removeLoadingReason } from 'actions/loadingReasonActions'
 import { setCourses, removeCourse } from 'actions/courseActions'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { addConfirmationDialogue } from 'actions/confirmationDialogueActions'
 import ConfirmationDialogue from 'classes/ConfirmationDialogue'
@@ -10,9 +10,12 @@ import { addError } from 'actions/errorActions'
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
+import EnrollUser from 'components/admin/CourseManager/EnrollUser.js';
+
 const CourseManager = (props) => {
 
     const history = useHistory();
+    const [selectedCourse, setSelectedCourse] = useState(undefined);
 
     const fetchCourses = () => {
 
@@ -20,7 +23,6 @@ const CourseManager = (props) => {
 
         axios.get('/api/v1/courses')
             .then((res) => {
-                console.log(res.data)
                 setCourses(res.data)(props.dispatch)
             })
             .catch((err) => {
@@ -66,6 +68,10 @@ const CourseManager = (props) => {
 
     return (
         <>
+            <EnrollUser
+                course={selectedCourse}
+                setCourse={setSelectedCourse}
+            />
             <h1>Course Manager</h1>
             <Link to="/admin/courses/create">Create a course</Link>
             <hr />
@@ -88,6 +94,7 @@ const CourseManager = (props) => {
 
                             <Button
                                 variant="secondary"
+                                onClick={() => setSelectedCourse(course)}
                             >
                                 Enroll Student
                             </Button>

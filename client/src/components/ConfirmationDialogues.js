@@ -26,10 +26,10 @@ const ConfirmationDialogues = (props) => {
             <Modal.Body>{confirmationDialogue.prompt}</Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleAccept}>
-                    Accept
+                {confirmationDialogue.acceptButtonText || 'Accept'}
                 </Button>
                 <Button variant="primary" onClick={handleReject}>
-                    Reject
+                {confirmationDialogue.rejectButtonText || 'Reject'}
                 </Button>
             </Modal.Footer>
         </Modal>

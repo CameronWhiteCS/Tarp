@@ -5,11 +5,13 @@ class Course(db.Model):
     title = db.Column(db.String(255), nullable=False)
     code = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(1024), nullable=False)
+    enrollments = db.relationship('CourseEnrollment', cascade='all,delete', backref='course')
 
     def to_dict(self):
+
         return {
             'id': self.id,
             'title': self.title,
             'code': self.code,
-            'description': self.description
+            'description': self.description,
         }

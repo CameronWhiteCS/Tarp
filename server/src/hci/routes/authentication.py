@@ -137,9 +137,3 @@ def route_session_check(user=None):
                 session.clear()
                 return error('Invalid session.')
             return make_response(get_user_data(user), 200)
-
-
-
-@app.route('/api/v1/user/<id>')
-def route_get_user_by_id(id):
-    pass

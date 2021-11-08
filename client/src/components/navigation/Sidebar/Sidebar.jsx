@@ -43,8 +43,8 @@ const Sidebar = (props) => {
             </div>
 
 
-            <div class={`sidebar-item ${section === 'asdf' ? 'selected' : ''}`}>
-                <IconBook onClick={() => visitUrl('/')} />
+            <div class={`sidebar-item ${section === 'courses' ? 'selected' : ''}`}>
+                <IconBook onClick={() => visitUrl('/courses')} />
                 Courses
             </div>
 
