@@ -13,77 +13,7 @@ const Messages = (props) => {
             content: 'hello, wasdfasfasdfasfd asd fas d f asdaf  asfasf  ass asf asf asf as asf asf asfdorld! asd fas d ad fasd fasdfas f',
             authorName: 'Cameron White'
         },
-        {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        },
-        {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        },
-        {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        }, {
-            id: 1,
-            content: 'hello, world!',
-            authorName: 'Cameron White'
-        },
+       
     ]
 
     return (
