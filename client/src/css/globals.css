@@ -1,5 +1,7 @@
 :root {
     --bar-size: 85px;
+    --gator-blue: #084B81;
+    --gator-orange: #EE811D;
 }
 
 form {

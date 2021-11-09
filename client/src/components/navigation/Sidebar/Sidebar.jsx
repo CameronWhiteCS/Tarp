@@ -48,8 +48,8 @@ const Sidebar = (props) => {
                 Courses
             </div>
 
-            <div class={`sidebar-item ${section === 'asf' ? 'selected' : ''}`}>
-                <IconInbox onClick={() => visitUrl('/')} />
+            <div class={`sidebar-item ${section === 'messages' ? 'selected' : ''}`}>
+                <IconInbox onClick={() => visitUrl('/messages')} />
                 Messages
             </div>
 

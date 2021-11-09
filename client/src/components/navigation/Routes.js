@@ -3,6 +3,7 @@ import Home from 'components/Home'
 import SignUp from 'components/forms/SignUp'
 import SignIn from 'components/forms/SignIn'
 import Courses from 'components/Courses'
+import Messages from 'components/Messages'
 
 import AdminControlPanel from 'components/admin/AdminControlPanel'
 import CourseManager from 'components/admin/CourseManager'
@@ -15,7 +16,10 @@ const Routes = () => {
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/signup" render={() => <SignUp />} />
             <Route exact path="/signin" render={() => <SignIn />} />
+
             <Route exact path="/courses" render={() => <Courses />} />
+
+            <Route exact path="/messages" render={() => <Messages />} />
 
             <Route exact path="/admin" render={() => <AdminControlPanel />} />
             <Route exact path="/admin/courses" render={() => <CourseManager />} />

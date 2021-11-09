@@ -3,12 +3,14 @@ body {
     display: block;
     margin: 0;
     padding: 0;
+
 }
 
 #macro-layout {
     display: flex;
     flex-direction: row;
     height: 100%;
+    background-color: #BDBDBD;
 }
 
 #ribbon-and-main {
