@@ -1,0 +1,48 @@
+#ribbon {
+    min-width: var(--bar-size);
+    max-width: var(--bar-size);
+    display: flex;
+    flex-direction: column;
+    background-color: #084B81;
+    min-height: 100vh;
+}
+
+.ribbon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--bar-size);
+    min-width: var(--bar-size);
+    color: white;
+    text-align: center;
+    padding: 5px;
+}  
+
+.selected {
+    background-color: #FFF !important;
+    color: #084B81 !important;
+}
+
+.sidebar-item:hover {
+    background-color: #063c68;
+    color: white;
+}
+
+.sidebar-item svg {
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar-item svg:hover {
+    cursor: pointer;
+}
+
+.selected svg {
+    color: orange;
+}
+
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
+    color: inherit;
+}

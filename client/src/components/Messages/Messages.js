@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-
+import { useState } from 'react';
 import './style.css'
 
 import TarpGrid from 'components/TarpGrid';
@@ -7,14 +7,98 @@ import TarpGridItem from 'components/TarpGridItem';
 
 const Messages = (props) => {
 
-    const messages = [
+    const [messages, setMessages] = useState([
         {
             id: 1,
-            content: 'hello, wasdfasfasdfasfd asd fas d f asdaf  asfasf  ass asf asf asf as asf asf asfdorld! asd fas d ad fasd fasdfas f',
-            authorName: 'Cameron White'
+            type: 'email',
+            content: '1',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
         },
-       
-    ]
+        {
+            id: 2,
+            type: 'email',
+            content: '2',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+        {
+            id: 3,
+            type: 'email',
+            content: '3',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+        {
+            id: 1,
+            type: 'email',
+            content: '1',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+        {
+            id: 2,
+            type: 'email',
+            content: '2',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+        {
+            id: 3,
+            type: 'email',
+            content: '3',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+        {
+            id: 1,
+            type: 'email',
+            content: '1',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+        {
+            id: 2,
+            type: 'email',
+            content: '2',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+        {
+            id: 3,
+            type: 'email',
+            content: '3',
+            authorName: 'Cameron White',
+            isRead: false,
+            isBot: false,
+            isDeleted: false,
+            isFavorited: false,
+        },
+    ]);
 
     return (
         <TarpGrid>
@@ -26,9 +110,11 @@ const Messages = (props) => {
                             authorName={'Author Name'}
                             courseCode={'SAH4096'}
                             date={'2021/11/1'}
-                            onDelete={() => {}}
-                            onSelect={() => {}}
-                            content={'Content here'}
+                            onDelete={() => {
+                                setMessages(messages.filter(item => item.id !== message.id));
+                            }}
+                            onSelect={() => { }}
+                            content={message.content}
                             subtitle={'Subtitle here'}
                         />
                     )
