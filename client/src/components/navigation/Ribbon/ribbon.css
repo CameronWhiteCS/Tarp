@@ -1,10 +1,23 @@
 #ribbon {
-    min-width: var(--bar-size);
-    max-width: var(--bar-size);
+    /* min-width: var(--bar-size);
+    max-width: var(--bar-size); */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: #084B81;
-    min-height: 100vh;
+}
+
+.ribbon-component{
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.ribbon-section{
+    display: flex;
+    flex-direction: row;
+    background-color: #116ab3;
+    border-radius: 15px;
+    margin-right: 10px;
 }
 
 .ribbon-item {
@@ -17,6 +30,9 @@
     color: white;
     text-align: center;
     padding: 5px;
+    border-radius: 15px;
+    /* margin: 5px; */
+    
 }  
 
 .selected {
@@ -24,17 +40,17 @@
     color: #084B81 !important;
 }
 
-.sidebar-item:hover {
+.ribbon-item:hover {
     background-color: #063c68;
     color: white;
 }
 
-.sidebar-item svg {
-    width: 40px;
-    height: 40px;
+.ribbon-item svg {
+    width: 30px;
+    height: 30px;
 }
 
-.sidebar-item svg:hover {
+.ribbon-item svg:hover {
     cursor: pointer;
 }
 

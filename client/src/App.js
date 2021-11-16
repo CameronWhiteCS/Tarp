@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { setUserData } from 'actions/userDataActions'
 import { removeLoadingReason, addLoadingReason } from 'actions/loadingReasonActions';
 
-import Sidebar from 'components/navigation/Sidebar'
+import Sidebar from 'components/navigation/Sidebar';
+import Ribbon from 'components/navigation/Ribbon/Ribbon';
 import Routes from 'components/navigation/Routes';
 import Errors from 'components/Errors'
 import Loading from 'components/Loading'
@@ -30,7 +31,7 @@ const App = (props) => {
         setUserData(res.data)(props.dispatch)
       })
       .catch(err => {
-      if(err) history.push('/signin')
+        if (err) history.push('/signin')
       })
       .finally(() => {
         removeLoadingReason(loadingReason)(props.dispatch)
@@ -49,7 +50,7 @@ const App = (props) => {
         <Sidebar />
         <div id="ribbon-and-main">
           <div id="ribbon">
-            RIBBON
+            <Ribbon />
           </div>
           <div id="main">
             <Routes />
