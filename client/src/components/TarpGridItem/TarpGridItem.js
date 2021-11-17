@@ -2,6 +2,7 @@
 import { ReactComponent as IconTrash } from 'res/icon/trash-2.svg';
 import { ReactComponent as IconMail } from 'res/icon/mail.svg';
 import { ReactComponent as IconStar } from 'res/icon/star.svg';
+import { ReactComponent as IconUser } from 'res/icon/user.svg';
 import './style.css'
 
 /**
@@ -31,22 +32,28 @@ const TarpGridItem = (props) => {
         <div className="tarp-grid-item">
 
             <div className="title" style={titleStyle}>
+                <div className="is-read"></div>
                 {props.title || 'Untitled'}
             </div>
 
             <div className="header">
-                {
-                    props.authorName &&
-                    <p className="author-name">{props.authorName}</p>
-                }
-                {
-                    props.courseCode &&
-                    <p className="course-code">{props.courseCode}</p>
-                }
-                {
-                    props.date &&
-                    <p className="date"> {props.date}</p>
-                }
+                <div className="header-icon"><IconUser /></div>
+                <div className="header-text">
+                    {
+                        props.authorName &&
+                        <p className="author-name">{props.authorName}</p>
+                    }
+                    {
+                        props.courseCode &&
+                        <p className="course-code">{props.courseCode}</p>
+                    }
+                    {
+                        props.date &&
+                        <p className="date"> {props.date}</p>
+                    }
+                </div>
+
+
             </div>
 
             {
