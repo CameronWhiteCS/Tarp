@@ -1,6 +1,8 @@
 .tarp-grid {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 1em;
+    /* flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
 }

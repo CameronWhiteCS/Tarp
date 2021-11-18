@@ -13,16 +13,40 @@
 }
 
 .tarp-grid-item .title {
+    display: flex;
+    flex-direction: row;
     border-radius: 15px 15px 0px 0px;
     padding: var(--gap);
     text-align: center;
     font-weight: 700;
     font-variant: small-caps;
     color: white;
-
 }
 
-.tarp-grid-item .header {
+.tarp-grid-item .title .is-read{
+        width: 18px;
+        height: 18px;
+        background: orange;
+        border-radius: 9px;
+        margin-right: 31%;
+}
+
+.tarp-grid-item .header{
+    display: flex;
+    flex-direction: row;
+}
+
+.tarp-grid-item .header-icon{
+    width: 40%;
+    padding-left: 10%;
+}
+
+.tarp-grid-item .header-icon svg {
+    width: 50px;
+    height: 50px;
+}
+
+.tarp-grid-item .header-text {
     display: flex;
     flex-direction: column;
     padding: var(--gap);
