@@ -1,16 +1,12 @@
 #ribbon {
-    /* min-width: var(--bar-size);
-    max-width: var(--bar-size); */
     display: flex;
     flex-direction: row;
     background-color: #084B81;
 }
 
-.ribbon-component{
+.ribbon-component {
     text-align: center;
     font-size: 10px;
-    /* align-items: center;
-    justify-content: center; */
     color: white;
 }
 
@@ -38,7 +34,7 @@
 
 .selected {
     background-color: #FFF !important;
-    color: #084B81 !important;
+    color: var(--gator-orange);
 }
 
 .ribbon-item:hover {
@@ -53,10 +49,6 @@
 
 .ribbon-item svg:hover {
     cursor: pointer;
-}
-
-.selected svg {
-    color: orange;
 }
 
 a, a:hover, a:visited, a:active {

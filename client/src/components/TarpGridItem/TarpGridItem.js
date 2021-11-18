@@ -1,6 +1,5 @@
 
 import { ReactComponent as IconTrash } from 'res/icon/trash-2.svg';
-import { ReactComponent as IconMail } from 'res/icon/mail.svg';
 import { ReactComponent as IconStar } from 'res/icon/star.svg';
 import { ReactComponent as IconUser } from 'res/icon/user.svg';
 import './style.css'
@@ -22,22 +21,25 @@ const TarpGridItem = (props) => {
 
     const titleStyle = {
         backgroundColor: props.headerColor || '#27AE60'
+
     }
 
-    const starIconStyle = {
-        color: props.selected ? '#FFDB5A' : 'currentColor'
-    }
+    const starIconStyle = props.selected ? { color: '#FFDB5A' } : {}
 
     return (
         <div className="tarp-grid-item">
 
             <div className="title" style={titleStyle}>
-                <div className="is-read"></div>
-                {props.title || 'Untitled'}
+                <div className="unread"/>
+                <span style={{width: '100%'}}>
+                    {props.title || 'Untitled'}
+                </span>
             </div>
 
             <div className="header">
-                <div className="header-icon"><IconUser /></div>
+                <div className="header-icon">
+                    <IconUser />
+                </div>
                 <div className="header-text">
                     {
                         props.authorName &&
@@ -52,8 +54,6 @@ const TarpGridItem = (props) => {
                         <p className="date"> {props.date}</p>
                     }
                 </div>
-
-
             </div>
 
             {

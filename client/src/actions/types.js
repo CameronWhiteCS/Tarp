@@ -15,3 +15,5 @@ export const SET_USER_DATA = 'SET_USER_DATA'
 export const SET_COURSES = 'SET_COURSES'
 export const ADD_COURSE = 'ADD_COURSE'
 export const REMOVE_COURSE = 'REMOVE_COURSE'
+
+export const SET_RIBBON_STATE = 'SET_RIBBON_STATE'
