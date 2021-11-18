@@ -14,6 +14,7 @@ import Ribbon from 'components/Ribbon';
 const Messages = (props) => {
 
     const [messages, setMessages] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('')
 
     const init = () => {
 
@@ -87,7 +88,7 @@ const Messages = (props) => {
                     setMessages(newMessages);
 
                 });
-                
+
         }
 
 
@@ -96,6 +97,10 @@ const Messages = (props) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <Ribbon />
+            <div class="search-bar">
+                <input type="text" placeholder="Search Messages" onChange={event => { setSearchTerm(event.target.value) }} />
+            </div>
+
             <TarpGrid>
                 {
                     messages.map(message => {
