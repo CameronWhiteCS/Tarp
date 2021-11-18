@@ -6,6 +6,8 @@ class Course(db.Model):
     code = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(1024), nullable=False)
     enrollments = db.relationship('CourseEnrollment', cascade='all,delete', backref='course')
+    professor_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    professor = db.relationship('User')
 
     def to_dict(self):
 
@@ -14,4 +16,5 @@ class Course(db.Model):
             'title': self.title,
             'code': self.code,
             'description': self.description,
+            'professorName': f'{self.professor.first_name} {self.professor.last_name}'
         }

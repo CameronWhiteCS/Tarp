@@ -128,7 +128,6 @@ def route_get_courses_by_user_id(user_id):
 
     for enrollment in course_enrollments:
         course = enrollment.course.to_dict()
-        course['role'] = enrollment.role.value
         output.append(course)
 
     return make_response(jsonify(output), 200)
