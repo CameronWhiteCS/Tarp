@@ -6,7 +6,6 @@ import { setUserData } from 'actions/userDataActions'
 import { removeLoadingReason, addLoadingReason } from 'actions/loadingReasonActions';
 
 import Sidebar from 'components/navigation/Sidebar';
-import Ribbon from 'components/navigation/Ribbon/Ribbon';
 import Routes from 'components/navigation/Routes';
 import Errors from 'components/Errors'
 import Loading from 'components/Loading'
@@ -49,9 +48,6 @@ const App = (props) => {
       <div id="macro-layout">
         <Sidebar />
         <div id="ribbon-and-main">
-          <div id="ribbon">
-            <Ribbon />
-          </div>
           <div id="main">
             <Routes />
           </div>

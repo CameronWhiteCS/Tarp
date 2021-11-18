@@ -10,7 +10,8 @@ const initialState = {
     },
     loadingReasons: [],
     courses: [],
-    confirmationDialogues: []
+    confirmationDialogues: [],
+    ribbonState: {}
 }
 
 const store = createStore(rootReducer, initialState)

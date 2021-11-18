@@ -5,6 +5,7 @@ import userDataReducer from './userDataReducer';
 import loadingReasonReducer from './loadingReasonReducer'
 import courseReducer from './courseReducer'
 import confirmationDialogueReducer from './confirmationDialogueReducer'
+import ribbonStateReducer from './ribbonStateReducer'
 
 export default combineReducers({
     emails: emailReducer,
@@ -13,6 +14,8 @@ export default combineReducers({
     loadingReasons: loadingReasonReducer,
     courses: courseReducer,
     confirmationDialogues: confirmationDialogueReducer,
+    ribbonState: ribbonStateReducer,
+
     //announcements: announcementReducers,
     //courses: courseReducer,
     //discussionBoardMessages: discussionBoardMessageReducer,

@@ -23,12 +23,12 @@
     color: white;
 }
 
-.tarp-grid-item .title .is-read{
+.tarp-grid-item .title .unread{
         width: 18px;
         height: 18px;
-        background: orange;
+        background-color: var(--gator-orange);
         border-radius: 9px;
-        margin-right: 31%;
+        position: absolute;
 }
 
 .tarp-grid-item .header{
@@ -88,7 +88,7 @@
 }
 
 .tarp-grid-item .footer svg:hover {
-    color: var(--gator-orange);
+    color: var(--gator-orange) !important;
     transition-property: color;
     transition-duration: 125ms;
 }

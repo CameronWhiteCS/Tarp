@@ -22,14 +22,24 @@ import './ribbon.css'
 
 const Sidebar = (props) => {
 
+    const location = useLocation();
+    const section = location.pathname?.split('/')[1];
+
+
+    const history = useHistory();
+
+    const visitUrl = (url) => {
+        history.push(url);
+    }
+
     return (
         <div id="ribbon">
 
             <div class='ribbon-component'>
-                <div>MAIL BOX</div>
+                <div style={{ color: "#084B81" }}>MAIL BOX</div>
                 <div class='ribbon-section'>
-                    <div>
-                        <IconEdit  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconEdit onClick={() => visitUrl('/')} />
                         Compose
                     </div>
                 </div>
@@ -38,18 +48,18 @@ const Sidebar = (props) => {
             <div class='ribbon-component'>
                 <div>MAIL BOX</div>
                 <div class='ribbon-section'>
-                    <div >
-                        <IconLayers  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconLayers onClick={() => visitUrl('/')} />
                         All
                     </div>
 
-                    <div >
-                        <IconMail  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconMail onClick={() => visitUrl('/')} />
                         Unread
                     </div>
 
-                    <div >
-                        <IconSend  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconSend onClick={() => visitUrl('/')} />
                         Sent
                     </div>
                 </div>
@@ -58,18 +68,18 @@ const Sidebar = (props) => {
             <div class='ribbon-component'>
                 POST TYPES
                 <div class='ribbon-section'>
-                    <div >
-                        <IconVolume  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconVolume onClick={() => visitUrl('/')} />
                         Announce.
                     </div>
 
                     <div class={`ribbon-item ${section === 'asfd' ? 'selected' : ''}`}>
-                        <IconMessageSquare  />
+                        <IconMessageSquare onClick={() => visitUrl('/')} />
                         Discussions
                     </div>
 
-                    <div >
-                        <IconMessageCircle  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconMessageCircle onClick={() => visitUrl('/')} />
                         Messages
                     </div>
                 </div>
@@ -79,18 +89,18 @@ const Sidebar = (props) => {
             <div class='ribbon-component'>
                 ORGANIZATION
                 <div class='ribbon-section'>
-                    <div >
-                        <IconStar  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconStar onClick={() => visitUrl('/')} />
                         Marked
                     </div>
 
-                    <div >
-                        <IconTrash  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconTrash onClick={() => visitUrl('/')} />
                         Trash
                     </div>
 
-                    <div >
-                        <IconLouOut  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconLouOut onClick={() => visitUrl('/')} />
                         Auto.
                     </div>
                 </div>
@@ -99,8 +109,8 @@ const Sidebar = (props) => {
             <div class='ribbon-component'>
                 <div style={{ color: "#084B81" }}>MAIL BOX</div>
                 <div class='ribbon-section'>
-                    <div >
-                        <IconCheck  />
+                    <div class={`ribbon-item ${section === 'asdf' ? 'selected' : ''}`}>
+                        <IconCheck onClick={() => visitUrl('/')} />
                         All Read
                     </div>
                 </div>
