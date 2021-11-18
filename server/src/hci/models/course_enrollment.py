@@ -9,5 +9,4 @@ class CourseEnrollment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
-    role = db.Column(db.Enum(CourseRole), default=CourseRole.STUDENT)
 
