@@ -47,10 +47,8 @@ const App = (props) => {
       <ConfirmationDialogues />
       <div id="macro-layout">
         <Sidebar />
-        <div id="ribbon-and-main">
-          <div id="main">
-            <Routes />
-          </div>
+        <div id="main">
+          <Routes />
         </div>
       </div>
 
