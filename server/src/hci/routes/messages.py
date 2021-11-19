@@ -2,13 +2,13 @@ from flask import make_response, jsonify, request
 from sqlalchemy.orm import with_polymorphic
 
 from hci.globals import app, db
-from hci.models import Message, Email
+from hci.models import Message
 
 
 @app.route('/api/v1/messages', methods=['GET'])
 def route_get_all_messages():
 
-    messages = db.session.query(with_polymorphic(Message, [Email])).all()
+    messages = db.session.query(Message).order_by(Message.created_at.desc()).all()
 
     output = []
 

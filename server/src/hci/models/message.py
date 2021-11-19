@@ -1,4 +1,5 @@
 from hci.globals import db
+import datetime
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -12,6 +13,8 @@ class Message(db.Model):
     is_deleted = db.Column(db.Boolean, nullable=False, default=False)
     is_favorited = db.Column(db.Boolean, nullable=False, default=False)
     type = db.Column(db.String(50))
+    title = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
     __mapper_args__ = {
         'polymorphic_identity':'MESSAGE',
@@ -29,5 +32,7 @@ class Message(db.Model):
             'isAutomated': self.is_automated,
             'isDeleted': self.is_deleted,
             'isFavorited': self.is_favorited,
-            'type': self.type
+            'type': self.type,
+            'title': self.title,
+            'createdAt': self.created_at
         }

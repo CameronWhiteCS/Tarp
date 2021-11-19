@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { useState } from 'react';
-import './style.css'
 
 import TarpGrid from 'components/TarpGrid';
 import TarpGridItem from 'components/TarpGridItem';
@@ -10,6 +9,8 @@ import { addLoadingReason, removeLoadingReason } from 'actions/loadingReasonActi
 import { addError } from 'actions/errorActions';
 
 import Ribbon from 'components/Ribbon';
+
+import moment from 'moment-timezone'
 
 const Messages = (props) => {
 
@@ -25,7 +26,7 @@ const Messages = (props) => {
                 setMessages(res.data);
             })
             .catch(err => {
-                addError(err.response.data)(props.dispatch)
+                addError(err.response?.data)(props.dispatch)
             })
             .finally(() => {
                 removeLoadingReason(loadingReason)(props.dispatch)
@@ -87,10 +88,37 @@ const Messages = (props) => {
                     setMessages(newMessages);
 
                 });
-                
+
         }
 
 
+    }
+
+    const getHeaderColor = msg => {
+        if(msg.type === 'EMAIL') {
+            return '#084b81'
+        } else if (msg.type === 'DISCUSSION_BOARD_POST') {
+            return 'black';
+        } else {
+            return '#27ae60'
+        }
+    }
+
+    const getFormattedMessageType = msg => {
+        if(msg.type === 'EMAIL') {
+            return 'email'
+        } else if (msg.type === 'DISCUSSION_BOARD_POST') {
+            return 'Discussion'
+        } else if (msg.type === 'ANNOUNCEMENT') {
+            return 'Announcement';
+        } else {
+            return 'Undefined message type'
+        }
+
+    }
+
+    const getFormattedDate = msg => {
+        return moment(new Date(msg.createdAt)).tz('America/New_York').format('MM/DD/YYYY hh:mm')
     }
 
     return (
@@ -101,15 +129,16 @@ const Messages = (props) => {
                     messages.map(message => {
                         return (
                             <TarpGridItem
-                                title={'TITLE'}
-                                authorName={'Author Name'}
-                                courseCode={'SAH4096'}
-                                date={'2021/11/1'}
+                                title={getFormattedMessageType(message)}
+                                authorName={`${message.author?.firstName} ${message.author?.lastName}`}
+                                courseCode={message.course?.code}
+                                date={getFormattedDate(message)}
                                 onDelete={() => deleteMessage(message)}
                                 onSelect={() => favoriteMessage(message)}
                                 content={message.content}
-                                subtitle={'Subtitle here'}
+                                subtitle={message.title}
                                 selected={message.isFavorited}
+                                headerColor={getHeaderColor(message)}
                             />
                         )
                     })

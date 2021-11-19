@@ -23,22 +23,17 @@
     color: white;
 }
 
-.tarp-grid-item .title .unread{
-        width: 18px;
-        height: 18px;
-        background-color: var(--gator-orange);
-        border-radius: 9px;
-        position: absolute;
+.tarp-grid-item .title .unread {
+    width: 18px;
+    height: 18px;
+    background-color: var(--gator-orange);
+    border-radius: 9px;
+    position: absolute;
 }
 
 .tarp-grid-item .header{
     display: flex;
     flex-direction: row;
-}
-
-.tarp-grid-item .header-icon{
-    width: 40%;
-    padding-left: 10%;
 }
 
 .tarp-grid-item .header-icon svg {
