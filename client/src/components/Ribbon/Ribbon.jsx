@@ -53,6 +53,7 @@ const Ribbon = (props) => {
                         Sent
                     </div>
                 </div>
+                &nbsp;
             </div>
 
             <div class='ribbon-component'>
