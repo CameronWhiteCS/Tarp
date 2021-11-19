@@ -119,7 +119,7 @@ const Messages = (props) => {
                 <input type="text" placeholder="Search Messages" onChange={event => { setSearchTerm(event.target.value) }} />
             </div>
 
-            <CourseFilter />
+            <CourseFilter onClick={value => setSearchTerm(value)} />
 
             <TarpGrid>
                 {

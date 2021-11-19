@@ -38,6 +38,12 @@
     border-radius: 15px;
 }
 
+.course:hover {
+    background-color: #063c68;
+    color: white;
+    cursor: pointer;
+}
+
 .course #semester{
     font-size: 15px;
 }

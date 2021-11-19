@@ -9,7 +9,7 @@ const CourseFilter = (props) => {
             <ul class="course-list">
                 {CourseData.map((val, key) => {
                     return (
-                        <li key={key} class="course" onClick={() => { }}>
+                        <li key={key} class="course" onClick={event => props.onClick("this")}>
                             <div id="semester"> Fall 2021 </div>
                             <div id="id"> {val.courseID} </div>
                             <div id="name"> {val.courseName} </div>
