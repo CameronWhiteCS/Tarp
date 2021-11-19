@@ -14,6 +14,7 @@ import Ribbon from 'components/Ribbon';
 const Messages = (props) => {
 
     const [messages, setMessages] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('')
 
     const init = () => {
 
@@ -87,18 +88,39 @@ const Messages = (props) => {
                     setMessages(newMessages);
 
                 });
-                
+
         }
 
 
     }
 
+    const messageToText = msg => {
+
+        let output = '';
+
+        const keys = Object.keys(msg);
+        keys.forEach(key => {
+            output += msg[key];
+        })
+
+        return output;
+    }
+
+    const filteredMessgaes = messages.filter(msg => {
+        return messageToText(msg).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+    });
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <Ribbon />
+
+            <div>
+                <input type="text" placeholder="Search Messages" onChange={event => { setSearchTerm(event.target.value) }} />
+            </div>
+
             <TarpGrid>
                 {
-                    messages.map(message => {
+                    filteredMessgaes.map(message => {
                         return (
                             <TarpGridItem
                                 title={'TITLE'}
