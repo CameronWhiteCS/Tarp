@@ -10,6 +10,7 @@ import { addLoadingReason, removeLoadingReason } from 'actions/loadingReasonActi
 import { addError } from 'actions/errorActions';
 
 import Ribbon from 'components/Ribbon';
+import CourseFilter from 'components/CourseFilter';
 
 const Messages = (props) => {
 
@@ -114,9 +115,11 @@ const Messages = (props) => {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <Ribbon />
 
-            <div>
+            <div class="search-bar">
                 <input type="text" placeholder="Search Messages" onChange={event => { setSearchTerm(event.target.value) }} />
             </div>
+
+            <CourseFilter />
 
             <TarpGrid>
                 {
