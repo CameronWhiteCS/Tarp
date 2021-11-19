@@ -94,6 +94,23 @@ const Messages = (props) => {
 
     }
 
+    const messageToText = msg => {
+
+        let output = '';
+
+        const keys = Object.keys(msg);
+        keys.forEach(key => {
+            output += msg[key];
+        })
+
+        return output;
+
+    }
+
+    const filteredMessgaes = messages.filter(msg => {
+        return messageToText(msg).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+    });
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <Ribbon />
@@ -103,7 +120,7 @@ const Messages = (props) => {
 
             <TarpGrid>
                 {
-                    messages.map(message => {
+                    filteredMessgaes.map(message => {
                         return (
                             <TarpGridItem
                                 title={'TITLE'}
@@ -113,7 +130,7 @@ const Messages = (props) => {
                                 onDelete={() => deleteMessage(message)}
                                 onSelect={() => favoriteMessage(message)}
                                 content={message.content}
-                                subtitle={'Subtitle here'}
+                                subtitle={'Subtitle here', () => getMessageContent(message)}
                                 selected={message.isFavorited}
                             />
                         )
