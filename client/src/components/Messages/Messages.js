@@ -9,12 +9,14 @@ import { addLoadingReason, removeLoadingReason } from 'actions/loadingReasonActi
 import { addError } from 'actions/errorActions';
 
 import Ribbon from 'components/Ribbon';
+import CourseFilter from 'components/CourseFilter';
 
 import moment from 'moment-timezone'
 
 const Messages = (props) => {
 
     const [messages, setMessages] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('')
 
     const init = () => {
 
@@ -93,7 +95,23 @@ const Messages = (props) => {
 
 
     }
+    
+    const messageToText = msg => {
 
+        let output = '';
+
+        const keys = Object.keys(msg);
+        keys.forEach(key => {
+            output += msg[key];
+        })
+
+        return output;
+    }
+
+    const filteredMessgaes = messages.filter(msg => {
+        return messageToText(msg).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+    });
+  
     const getHeaderColor = msg => {
         if(msg.type === 'EMAIL') {
             return '#084b81'
@@ -124,9 +142,16 @@ const Messages = (props) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <Ribbon />
+
+            <div class="search-bar">
+                <input type="text" placeholder="Search Messages" onChange={event => { setSearchTerm(event.target.value) }} />
+            </div>
+
+            <CourseFilter onClick={value => setSearchTerm(value)} />
+
             <TarpGrid>
                 {
-                    messages.map(message => {
+                    filteredMessgaes.map(message => {
                         return (
                             <TarpGridItem
                                 title={getFormattedMessageType(message)}
