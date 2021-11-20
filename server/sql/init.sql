@@ -40,9 +40,9 @@ INSERT INTO `course_enrollment` (`user_id`, `course_id`) VALUES
 ('4', '1'), ('4', '2'), ('4', '3'), ('4', '4');
 
 -- Messages -- 
-INSERT INTO `message` (`id`, `author_id`, `course_id`, `title`, `content`, `is_read`, `is_automated`, `is_deleted`, `is_favorited`, `type`) VALUES
-('1', '4', '1', 'Email title', 'This is a test email', '0', '0', '0', '0', 'EMAIL'),
-('2', '4', '2', null, 'This is a test discussion board post', '0', '0', '0', '0', 'DISCUSSION_BOARD_POST'),
-('3', '4', '3', null, 'This is a test announcement', '0', '0', '0', '0', 'ANNOUNCEMENT');
+INSERT INTO `message` (`id`, `author_id`, `course_id`, `title`, `content`, `is_read`, `is_automated`, `is_deleted`, `is_favorited`, `type`, `created_at`) VALUES
+('1', '4', '1', 'Email title', 'This is a test email', '0', '0', '0', '0', 'EMAIL', '1900-01-01 12:00:00'),
+('2', '4', '2', null, 'This is a test discussion board post', '0', '0', '0', '0', 'DISCUSSION_BOARD_POST', '1950-01-01 12:00:00'),
+('3', '4', '3', 'No class tomorrow', 'Class is cancelled tomorrow. I have to attend the national steak conference.', '0', '0', '0', '0', 'ANNOUNCEMENT', '2001-01-01 12:00:00');
 
 FLUSH PRIVILEGES;

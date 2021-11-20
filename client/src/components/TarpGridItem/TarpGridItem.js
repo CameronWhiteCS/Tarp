@@ -59,7 +59,7 @@ const TarpGridItem = (props) => {
             {
                 props.subtitle &&
                 <div className="subtitle">
-                    {props.subtitle}
+                    <b>{props.subtitle}</b>
                 </div>
             }
 
