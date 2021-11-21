@@ -1,31 +1,25 @@
-.course-filter {
+.course-filter-card {
     background-color: white;
-    z-index: 1000;
-    position: fixed;
-    right: 250px;
     width: 400px;
     height: 100%;
-    margin-right: -250px;
-    margin-top: 103px;
 }
 
-.course-filter #all{
+.course-filter-card .title {
     width: 90%;
     font-size: 20px;
     margin-left: 15px;
-    margin-top: 20px;
     color: gray;
     border-bottom: 1px solid var(--gator-blue);
 }
 
-.course-list{
+.course-list {
     height: auto;
     width: 100%;
     padding: 0;
     align-items: center;
 }
 
-.course-list .course{
+.course-list .course {
     height: auto;
     width: 90%;
     color: white;
@@ -38,18 +32,22 @@
     border-radius: 15px;
 }
 
+.course-active {
+    color: var(--gator-orange) !important;
+    background-color: var(--gator-blue) !important ;
+}
+
 .course:hover {
     background-color: #063c68;
-    color: white;
     cursor: pointer;
 }
 
-.course #semester{
+.course .semester {
     font-size: 15px;
 }
-.course #id{
+.course .code {
     font-size: 40px;
 }
-.course #name{
+.course .name {
     font-size: 20px;
 }
