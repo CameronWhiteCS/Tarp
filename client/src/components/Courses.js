@@ -5,11 +5,19 @@ import { addLoadingReason, removeLoadingReason } from 'actions/loadingReasonActi
 import { setCourses } from 'actions/courseActions';
 import { addError } from 'actions/errorActions';
 
+import { Link } from 'react-router-dom'
+import TarpGrid from './TarpGrid';
+import TarpGridItem from './TarpGridItem';
+
 const Course = (props) => {
     return (
         <>
             <div key={`course-tile-${props.course.id}`}>
-                <p><b>{props.course.title}</b></p>
+                <p>
+                    <Link to={`/messages/course/${props.course.id}`}>
+                        <b>{props.course.title}</b>
+                    </Link>
+                </p>
                 <p>{props.course.code}</p>
                 <p>{props.course.description}</p>
             </div>
@@ -21,6 +29,8 @@ const Course = (props) => {
 const Courses = (props) => {
 
     useEffect(() => {
+
+        if(props.userData?.id === undefined) return;
 
         const loadingReason = 'Fetching courses...';
 
@@ -37,14 +47,24 @@ const Courses = (props) => {
                 removeLoadingReason(loadingReason)(props.dispatch)
             })
 
-    }, [])
+    }, [props.userData?.id])
 
     return (
         <>
-            <h1>Your Courses</h1>
-            {
-                props.courses.map(course => <Course course={course} />)
-            }
+            <TarpGrid>
+                {
+                    props.courses.map(course => 
+                        <TarpGridItem
+                            title={<Link to={`/messages/course/${course.id}`}>{course.title}</Link>}
+                            content={course.description}
+                            iconName='book'
+                            authorName={course.professorName}
+                            courseCode={course.code}
+                            hideRead
+                        /> 
+                    )
+                }
+            </TarpGrid>
         </>
     )
 }

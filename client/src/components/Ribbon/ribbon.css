@@ -32,7 +32,7 @@
     
 }  
 
-.selected {
+.ribbon-item .selected {
     background-color: #FFF !important;
     color: var(--gator-orange);
 }

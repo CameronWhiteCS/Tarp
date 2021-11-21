@@ -31,6 +31,14 @@
     position: absolute;
 }
 
+.tarp-grid-item .title .read {
+    width: 18px;
+    height: 18px;
+    background-color: inherit;
+    border-radius: 9px;
+    position: absolute;
+}
+
 .tarp-grid-item .header{
     display: flex;
     flex-direction: row;

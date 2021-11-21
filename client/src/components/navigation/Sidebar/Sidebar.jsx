@@ -31,16 +31,7 @@ const Sidebar = (props) => {
 
             <div className="sidebar-item"> </div>
 
-            <div class={`sidebar-item ${section === '' ? 'selected' : ''}`}>
-                <IconUser onClick={() => visitUrl('/')} />
-                Account
-            </div>
 
-
-            <div class={`sidebar-item ${section === 'asdf' ? 'selected' : ''}`}>
-                <IconSettings onClick={() => visitUrl('/')} />
-                Settings
-            </div>
 
 
             <div class={`sidebar-item ${section === 'courses' ? 'selected' : ''}`}>
@@ -53,21 +44,6 @@ const Sidebar = (props) => {
                 Messages
             </div>
 
-
-            <div class={`sidebar-item ${section === 'asdf' ? 'selected' : ''}`}>
-                <IconUsers onClick={() => visitUrl('/')} />
-                People
-            </div>
-
-            <div class={`sidebar-item ${section === 'asfd' ? 'selected' : ''}`}>
-                <IconCalendar onClick={() => visitUrl('/')} />
-                Calendar
-            </div>
-
-            <div class={`sidebar-item ${section === 'asdf' ? 'selected' : ''}`}>
-                <IconHelpCircle onClick={() => visitUrl('/')} />
-                Help
-            </div>
 
             {
                 props.userData.isAdmin === true &&

@@ -32,7 +32,7 @@ const SignIn = (props) => {
         axios.post('/api/v1/signin', values)
             .then((res) => {
                 setUserData(res.data)(props.dispatch)
-                history.push('/')
+                history.push('/messages')
             })
             .catch((err) => {
                 addError(err.response.data)(props.dispatch)

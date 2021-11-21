@@ -20,6 +20,7 @@ const Routes = () => {
             <Route exact path="/courses" render={() => <Courses />} />
 
             <Route exact path="/messages" render={() => <Messages />} />
+            <Route exact path="/messages/course/:courseId" render={() => <Messages />} />
 
             <Route exact path="/admin" render={() => <AdminControlPanel />} />
             <Route exact path="/admin/courses" render={() => <CourseManager />} />

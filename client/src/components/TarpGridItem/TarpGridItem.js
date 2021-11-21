@@ -2,6 +2,10 @@
 import { ReactComponent as IconTrash } from 'res/icon/trash-2.svg';
 import { ReactComponent as IconStar } from 'res/icon/star.svg';
 import { ReactComponent as IconUser } from 'res/icon/user.svg';
+import { ReactComponent as IconMail } from 'res/icon/mail.svg';
+import { ReactComponent as IconVolume } from 'res/icon/volume.svg';
+import { ReactComponent as IconMessageSquare } from 'res/icon/message-square.svg';
+import { ReactComponent as IconBook } from 'res/icon/book.svg';
 import './style.css'
 
 /**
@@ -16,6 +20,11 @@ import './style.css'
  * @param {function} [props.onDelete] Function called when the trash can icon is pressed. The trash can icon is only visible if this function is defined.
  * @param {function} [props.onSelect] Function called when the star icon is pressed. The star icon is only visible if this function is defined.
  * @param {boolean} [props.selected] If true, the star icon for this component has a yellow color to indicate that it's selected, assuming the star icon is visible. 
+ * @param {boolean} [props.hideRead] if true, the read recipt is hidden.
+ * @param {boolean} [props.read] if true, this item is marked as read. If false, an orange "unread" circle appears. 
+ * @param {boolean} [props.hideIcon] If true, the icon displayed for this card will not be shown. 
+ * @param {string} [props.iconName] name of the icon file minux the extension
+ * @param {func} [props.onClick] Function to run when the card itself is clicked. Primarily used for marking messages as read.
  */
 const TarpGridItem = (props) => {
 
@@ -24,21 +33,38 @@ const TarpGridItem = (props) => {
 
     }
 
+    const getIcon = name => {
+        switch (name) {
+            case 'mail':
+                return <IconMail />
+            case 'volume':
+                return <IconVolume />
+            case 'message-square':
+                return <IconMessageSquare />
+            case 'book':
+                return <IconBook />
+            default:
+                return <IconUser />
+        }
+    }
+
     const starIconStyle = props.selected ? { color: '#FFDB5A' } : {}
 
     return (
-        <div className="tarp-grid-item">
+        <div className="tarp-grid-item" onClick={props.onClick}>
 
             <div className="title" style={titleStyle}>
-                <div className="unread"/>
-                <span style={{width: '100%'}}>
+                {
+                    !props.hideRead && (props.read ? <div className="read" /> : <div className="unread" />)
+                }
+                <span style={{ width: '100%' }}>
                     {props.title || 'Untitled'}
                 </span>
             </div>
 
             <div className="header">
                 <div className="header-icon">
-                    <IconUser />
+                    {!props.hideIcon && getIcon(props.iconName)}
                 </div>
                 <div className="header-text">
                     {
@@ -67,10 +93,13 @@ const TarpGridItem = (props) => {
                 <p>{props.content || 'Undefined content'}</p>
             </div>
 
-            <div className="footer">
-                {props.onSelect && <IconStar onClick={props.onSelect} style={starIconStyle} />}
-                {props.onDelete && <IconTrash onClick={props.onDelete} />}
-            </div>
+            {
+                (props.onDelete || props.onSelect) &&
+                <div className="footer">
+                    {props.onSelect && <IconStar onClick={props.onSelect} style={starIconStyle} />}
+                    {props.onDelete && <IconTrash onClick={props.onDelete} />}
+                </div>
+            }
 
         </div>
     );
